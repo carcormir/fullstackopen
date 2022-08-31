@@ -1,0 +1,24 @@
+############################################
+## AJAX (Asynchronous JavaScript and XML) ##
+############################################
+The Notes page of the application follows an early-nineties 
+style of web development and uses "Ajax". As such, it's on 
+the crest of the wave of early 2000's web technology.
+
+AJAX (Asynchronous JavaScript and XML) is a term introduced 
+in February 2005 on the back of advancements in browser 
+technology to describe a new revolutionary approach that
+enabled the fetching of content to web pages using 
+JavaScript included within the HTML, without the need to 
+rerender the page.
+
+####################################
+## Single page application -> SPA ##
+####################################
+In recent years, the Single-page application (SPA) 
+style of creating web-applications has emerged. 
+SPA-style websites don't fetch all of their pages separately 
+from the server like our sample application does, but instead
+comprise only one HTML page fetched from the server, 
+the contents of which are manipulated with JavaScript that 
+executes in the browser.
