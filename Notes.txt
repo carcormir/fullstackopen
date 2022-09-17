@@ -22,3 +22,10 @@ from the server like our sample application does, but instead
 comprise only one HTML page fetched from the server, 
 the contents of which are manipulated with JavaScript that 
 executes in the browser.
+
+
+
+The application appears to work. However, it is forbidden 
+in React to mutate state directly, since it can result in 
+unexpected side effects. Changing state has to always be done 
+by setting the state to a new object.
