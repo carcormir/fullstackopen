@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const Header = (props) => {
   console.log(props)
   return (
@@ -83,6 +85,12 @@ const App = () => {
       }
     ]
   }
+  const [ counter, setCounter ] = useState(0)
+
+  // setTimeout(
+  //   () => setCounter(counter + 1),
+  //   1000
+  // )
 
   return (
     <div>
@@ -90,6 +98,9 @@ const App = () => {
       <Content parts={course.parts}
             />
       <Total parts={course.parts}  />
+      {counter}
+      <p>___________________________</p>
+      
     </div>
   )
 }
