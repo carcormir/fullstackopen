@@ -10,8 +10,62 @@ const Button = (props) => (
   </button>
 )
 
+const Average = (props) => {
+  let total = 0
+  let average = 0
+  total = props.totalGoods + props.totalNeutrals + props.totalBads
+  average = (props.totalGoods - props.totalBads) / total
+  return <div>{props.text} {average}</div>
+}
+
+const All = (props) => {
+  let all = 0
+  all = props.totalGoods + props.totalNeutrals + props.totalBads
+  return <div>{props.text} {all}</div>
+}
+
+const PositivePercentage = (props) => {
+  let all = 0
+  let positivePercentage = 0
+
+  all = props.totalGoods + props.totalNeutrals + props.totalBads
+  positivePercentage = (props.totalGoods / all)*100
+  return <div>{props.text} {positivePercentage} %</div>
+}
+
 const Statistics = (props) => {
-  // ...
+  let total = 0
+  let average = 0
+  let positivePercentage = 0
+
+  total = props.totalGoods + props.totalNeutrals + props.totalBads
+  positivePercentage = (props.totalGoods / total)*100
+  average = (props.totalGoods - props.totalBads) / total
+
+  if (total === 0){
+    return (<div>No feedback given</div>)
+  }
+  
+  return (<table>
+            <tbody>
+              <tr>
+                <td>Average</td>
+                <td>{average}</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>{total}</td>
+              </tr>
+              <tr>
+                <td>PositivePercentage</td>
+                <td>{positivePercentage} %</td>
+              </tr>
+            </tbody>
+          </table>)
+  // return (<div><div>Average {average}</div>
+  //               <div>Total {total}</div>
+  //               <div>PositivePercentage {positivePercentage} %</div>
+  //   </div>)
 }
 
 const App = () => {
@@ -21,35 +75,17 @@ const App = () => {
 
   const [all, setAll] = useState(0)
   const [average, setAverage] = useState(0)
-  const [weights, setWeights] = useState(0)  
   const [positivePercentage, setPositivePercentage] = useState(0)
   
   const setToGood = newValue => {
-    console.log('value now', newValue)
     setGood(newValue)
-    console.log('good', good)
-    setAll(all+1)
-    setWeights(weights+1)
-    setAverage(weights/all)
-
-    console.log('all', all)
-    console.log('weights', weights)
-    console.log('average', average)
-    console.log('---------')
   }
   const setToNeutral = newValue => {
-    console.log('value now', newValue)
     setNeutral(newValue)
-    setWeights(weights+0)
-    setAll(all+1)
-    setAverage(weights/all)
+
   }
   const setToBad = newValue => {
-    console.log('value now', newValue)
     setBad(newValue)
-    setWeights(weights-1)
-    setAll(all+1)
-    setAverage(weights/all)
   }
 
   return (
@@ -64,9 +100,8 @@ const App = () => {
       <Display text={"neutral"} value={neutral} />
       <Display text={"bad"} value={bad} />
 
-      <Display text={"all"} value={all} />
-      <Display text={"average"} value={average} />
-      <Display text={"positive percentage"} value={positivePercentage} />
+      <Statistics totalGoods={good} totalNeutrals={neutral} totalBads={bad} />
+
     </div>
   )
 }
